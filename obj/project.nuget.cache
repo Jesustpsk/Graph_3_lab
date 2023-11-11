@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "SgDkrLfn9irbhVE846x1NevXhhBmH/iuixCZKkSZswGoXRWvcbmHGT7/8rUMybXZQqJawqnyb2dQraYuK266Jg==",
+  "success": true,
+  "projectFilePath": "D:\\Учеба\\Graphics\\Graph_3_lab\\Graph_3_lab.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dmkuz\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.4\\microsoft.netcore.platforms.3.1.4.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\microsoft.win32\\2.0.1\\microsoft.win32.2.0.1.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\scottplot\\4.1.68\\scottplot.4.1.68.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\scottplot.wpf\\4.1.68\\scottplot.wpf.4.1.68.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\system.drawing.common\\4.7.2\\system.drawing.common.4.7.2.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
