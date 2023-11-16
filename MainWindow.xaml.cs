@@ -51,13 +51,13 @@ namespace Graph_3_lab
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             LoadObjectFromFile(objectFilePath);
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-            //UpdateProjectionMatrix();
-            //DisplayProjectionMatrix();
+            
             Display.CreateFigure(_figure, meshVisual, helixViewport);
         }
         private void BtnProj_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ProjMatrix = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD);
+            Projection.DisplayProjectionMatrix(tbMatrix, ProjMatrix);
         }
         
         private void LoadObjectFromFile(string filePath)
@@ -76,59 +76,6 @@ namespace Graph_3_lab
             _figure = Display.CreateList3D(dots);
         }
 
-        private void UpdateProjectionMatrix()
-        {
-            if (tbSx.Text.IsEmptyOrWhiteSpace() || tbSy.Text.IsEmptyOrWhiteSpace() || tbSz.Text.IsEmptyOrWhiteSpace() ||
-                tbD.Text.IsEmptyOrWhiteSpace()) return;
-            double sx = Convert.ToDouble(tbSx.Text) /* значение sx из интерфейса */;
-            double sy = Convert.ToDouble(tbSy.Text) /* значение sy из интерфейса */;
-            double sz = Convert.ToDouble(tbSz.Text) /* значение sz из интерфейса */;
-            double D = Convert.ToDouble(tbD.Text)   /* значение D из интерфейса */;
-
-            // Рассчитываем углы ψx, ψy, ψz (для примера, можно использовать нули)
-            double psix = 0;
-            double psiy = 0;
-            double psiz = 0;
-
-            // Рассчитываем угол λ (для примера, можно использовать нуль)
-            double lam = 0;
-
-            // Создаем матрицу проецирования
-            ProjMatrix = CalculateProjectionMatrix(sx, sy, sz, lam, D, psix, psiy, psiz);
-        }
-
-        private void DisplayProjectionMatrix()
-        {
-            // Отобразить матрицу в TextBox
-            //MatrixTextBox.Text = "Projection Matrix:\n" + projectionMatrix.ToString();
-        }
         
-        private double[,] CalculateProjectionMatrix(double sx, double sy, double sz, double lam, double D, double psix, double psiy, double psiz)
-        {
-            var matrix = new double[4,4];
-
-            // Рассчитываем элементы матрицы проецирования
-            matrix[0,0] = sx * Math.Cos(lam);
-            matrix[0,1] = -sy * Math.Sin(psix) * Math.Sin(lam);
-            matrix[0,2] = -sz * Math.Cos(psiy) * Math.Sin(lam);
-            matrix[0,3] = -D * Math.Sin(lam);
-
-            matrix[1,0] = sy * Math.Sin(psix);
-            matrix[1,1] = sx * Math.Cos(psix) * Math.Cos(lam);
-            matrix[1,2] = -sz * Math.Sin(psiy) * Math.Cos(lam);
-            matrix[1,3] = -D * Math.Cos(psix) * Math.Cos(lam);
-
-            matrix[2,0] = sz * Math.Sin(psiy);
-            matrix[2,1] = sz * Math.Cos(psiy);
-            matrix[2,2] = -sz * Math.Cos(psiy) * Math.Sin(psiy);
-            matrix[2,3] = -D * Math.Sin(psiy);
-
-            matrix[3,0] = 0;
-            matrix[3,1] = 0;
-            matrix[3,2] = 0;
-            matrix[3,3] = 1;
-
-            return matrix;
-        }
     }
 }
