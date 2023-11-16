@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ZxWwuTU1b8tbGtKpMLUA8IvZgOpvaOKkvyY06XYD9MBUc9oRuEgl+kfYeQ1joz0FOn5RJnyMMhJ/DO+iXcZwcw==",
+  "dgSpecHash": "C+gycLwQ/rTV27lc7KeGuBswz2rYJUrOBLMPAlQ6PB7KadThCzXtqQSCz+N5oKmY999cjgJ6TpyvGC/RuSRERA==",
   "success": true,
   "projectFilePath": "D:\\Учеба\\Graphics\\Graph_3_lab\\Graph_3_lab.csproj",
   "expectedPackageFiles": [
@@ -8,10 +8,23 @@
     "C:\\Users\\dmkuz\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.4\\microsoft.netcore.platforms.3.1.4.nupkg.sha512",
     "C:\\Users\\dmkuz\\.nuget\\packages\\microsoft.win32\\2.0.1\\microsoft.win32.2.0.1.nupkg.sha512",
     "C:\\Users\\dmkuz\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\opentk\\5.0.0-pre.9\\opentk.5.0.0-pre.9.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\opentk.audio.openal\\5.0.0-pre.9\\opentk.audio.openal.5.0.0-pre.9.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\opentk.compute\\5.0.0-pre.9\\opentk.compute.5.0.0-pre.9.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\opentk.core\\5.0.0-pre.9\\opentk.core.5.0.0-pre.9.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\opentk.graphics\\5.0.0-pre.9\\opentk.graphics.5.0.0-pre.9.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\opentk.input\\5.0.0-pre.9\\opentk.input.5.0.0-pre.9.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\opentk.mathematics\\5.0.0-pre.9\\opentk.mathematics.5.0.0-pre.9.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\opentk.platform.native\\5.0.0-pre.9\\opentk.platform.native.5.0.0-pre.9.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\opentk.redist.glfw\\3.3.8.39\\opentk.redist.glfw.3.3.8.39.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\opentk.windowing.common\\5.0.0-pre.9\\opentk.windowing.common.5.0.0-pre.9.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\opentk.windowing.desktop\\5.0.0-pre.9\\opentk.windowing.desktop.5.0.0-pre.9.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\opentk.windowing.graphicslibraryframework\\5.0.0-pre.9\\opentk.windowing.graphicslibraryframework.5.0.0-pre.9.nupkg.sha512",
     "C:\\Users\\dmkuz\\.nuget\\packages\\scottplot\\4.1.68\\scottplot.4.1.68.nupkg.sha512",
     "C:\\Users\\dmkuz\\.nuget\\packages\\scottplot.wpf\\4.1.68\\scottplot.wpf.4.1.68.nupkg.sha512",
     "C:\\Users\\dmkuz\\.nuget\\packages\\system.drawing.common\\4.7.2\\system.drawing.common.4.7.2.nupkg.sha512",
-    "C:\\Users\\dmkuz\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+    "C:\\Users\\dmkuz\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\dmkuz\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
   ],
   "logs": [
     {

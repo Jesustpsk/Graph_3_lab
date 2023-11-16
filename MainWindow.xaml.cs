@@ -28,13 +28,18 @@ namespace Graph_3_lab
     public partial class MainWindow : Window
     {
         private string objectFilePath;
-        private double[,] ProjMatrix;
+        private double[,] ProjMatrixAbove;
+        private double[,] ProjMatrixRight;
+        private double[,] ProjMatrixFront;
+        private static List<Point3D> vertices = new();
         public static List<Point3D> _figure = new();
         public MainWindow()
         {
-            ProjMatrix = new double[4, 4];
+            ProjMatrixAbove = new double[4, 4];
+            ProjMatrixRight = new double[4, 4];
+            ProjMatrixFront = new double[4, 4];
             InitializeComponent();
-            Display.SetAxis(helixViewport, PlotAbove.Plot, PlotFront.Plot, PlotRight.Plot);
+            Display.SetAxis(helixViewport, PlotAbove, PlotFront, PlotRight);
             // Включение вращения мышью
             helixViewport.RotateGesture = new MouseGesture(MouseAction.LeftClick);
         }
@@ -52,20 +57,30 @@ namespace Graph_3_lab
             LoadObjectFromFile(objectFilePath);
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             
-            Display.CreateFigure(_figure, meshVisual, helixViewport);
+            vertices = Display.CreateFigure(_figure, meshVisual, helixViewport);
         }
         private void BtnProj_OnClick(object sender, RoutedEventArgs e)
         {
-            ProjMatrix = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD);
-            Projection.DisplayProjectionMatrix(tbMatrix, ProjMatrix);
+            PlotAbove.Plot.Clear();
+            PlotRight.Plot.Clear();
+            PlotFront.Plot.Clear();
+            Display.SetPlotAxis(PlotAbove, PlotRight, PlotFront);
+            ProjMatrixAbove = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD);
+            ProjMatrixRight = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD);
+            ProjMatrixFront = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD);
+            Projection.DisplayProjectionMatrix(tbMatrix, ProjMatrixAbove);
+            Projection.DisplayProjections(vertices, ProjMatrixAbove, PlotAbove);
+            Projection.DisplayProjections(vertices, ProjMatrixRight, PlotRight);
+            Projection.DisplayProjections(vertices, ProjMatrixFront, PlotFront);
         }
         
         private void LoadObjectFromFile(string filePath)
         {
             _figure.Clear();
+            vertices.Clear();
             meshVisual.Children.Clear();
             helixViewport.Children.Clear();
-            Display.SetAxis(helixViewport, PlotAbove.Plot, PlotFront.Plot, PlotRight.Plot);
+            Display.SetAxis(helixViewport, PlotAbove, PlotFront, PlotRight);
             // Включение вращения мышью
             helixViewport.RotateGesture = new MouseGesture(MouseAction.LeftClick);
             // Установка камеры

@@ -52,6 +52,10 @@
               "target": "Package",
               "version": "[2.0.1, )"
             },
+            "OpenTK": {
+              "target": "Package",
+              "version": "[5.0.0-pre.9, )"
+            },
             "ScottPlot.WPF": {
               "target": "Package",
               "version": "[4.1.68, )"

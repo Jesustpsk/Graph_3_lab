@@ -27,7 +27,7 @@ public static class Display
         return output;
     }
 
-    public static void CreateFigure(List<Point3D> Points, MeshGeometryVisual3D meshVisual, HelixViewport3D helixViewport)
+    public static List<Point3D> CreateFigure(List<Point3D> Points, MeshGeometryVisual3D meshVisual, HelixViewport3D helixViewport)
     {
         var meshBuilder = new MeshBuilder();
         foreach (var p in Points)
@@ -50,6 +50,7 @@ public static class Display
             helixViewport.Children.Add(line);
         }
 
+        var vertices = new List<Point3D>();
         var strPoints = Points3DtoStrings(Points);
         foreach (var p in Points)
         {
@@ -62,12 +63,13 @@ public static class Display
                 FontSize = 8
             };
             helixViewport.Children.Add(labelC);
+            vertices.Add(p);
         }
-        
         meshVisual.MeshGeometry = meshGeometry;
+        return vertices;
     }
     
-    public static void SetAxis(HelixViewport3D helixViewport, Plot p1, Plot p2, Plot p3)
+    public static void SetAxis(HelixViewport3D helixViewport, WpfPlot p1, WpfPlot p2, WpfPlot p3)
     {
         // Добавление координатных прямых
         var xAxis = new LinesVisual3D
@@ -129,12 +131,17 @@ public static class Display
         helixViewport.Children.Add(labelY);
         helixViewport.Children.Add(labelZ);
         helixViewport.Children.Add(label0);
-        p1.AddVerticalLine(x: 0, color: System.Drawing.Color.Black, width: 1);
-        p1.AddHorizontalLine(y: 0, color: System.Drawing.Color.Black, width: 1);
-        p2.AddVerticalLine(x: 0, color: System.Drawing.Color.Black, width: 1);
-        p2.AddHorizontalLine(y: 0, color: System.Drawing.Color.Black, width: 1);
-        p3.AddVerticalLine(x: 0, color: System.Drawing.Color.Black, width: 1);
-        p3.AddHorizontalLine(y: 0, color: System.Drawing.Color.Black, width: 1);
+        SetPlotAxis(p1, p2, p3);
+    }
+
+    public static void SetPlotAxis(WpfPlot p1, WpfPlot p2, WpfPlot p3)
+    {
+        p1.Plot.AddVerticalLine(x: 0, color: System.Drawing.Color.Black, width: 1);
+        p1.Plot.AddHorizontalLine(y: 0, color: System.Drawing.Color.Black, width: 1);
+        p2.Plot.AddVerticalLine(x: 0, color: System.Drawing.Color.Black, width: 1);
+        p2.Plot.AddHorizontalLine(y: 0, color: System.Drawing.Color.Black, width: 1);
+        p3.Plot.AddVerticalLine(x: 0, color: System.Drawing.Color.Black, width: 1);
+        p3.Plot.AddHorizontalLine(y: 0, color: System.Drawing.Color.Black, width: 1);
     }
 
     private static List<string> Points3DtoStrings(List<Point3D> Points)
