@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ScottPlot="clr-namespace:ScottPlot;assembly=ScottPlot.WPF"
         xmlns:local="clr-namespace:Graph_3_lab"
+        xmlns:h="http://helix-toolkit.org/wpf"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="1000">
     <Grid ShowGridLines="True">
@@ -28,8 +29,12 @@
                FontSize="16" FontStyle="Italic" FontWeight="Black"
                Margin="0 0 0 235">Вид сверху:</Label>
         
-        <ScottPlot:WpfPlot Grid.Row="1" Grid.Column="2" Name="Plot3D"  
-                           Margin="0 10 0 0"/>
+        <!--ScottPlot:WpfPlot Grid.Row="1" Grid.Column="2" Name="Plot3D"  
+                           Margin="0 10 0 0"/!-->
+        <h:HelixViewport3D Grid.Row="1" Grid.Column="2" Name="helixViewport">
+               <h:DefaultLights/>
+               <h:MeshGeometryVisual3D x:Name="meshVisual"/>
+        </h:HelixViewport3D>
         <Label Grid.Row="1" Grid.Column="2" Width="190" Height="30" 
                FontSize="16" FontStyle="Italic" FontWeight="Black"
                Margin="0 0 0 235">Наглядная проекция:</Label>

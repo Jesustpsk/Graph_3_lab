@@ -23,3 +23,4 @@ D:\Учеба\Graphics\Graph_3_lab\obj\Debug\net7.0-windows\Graph_3_lab.pdb
 D:\Учеба\Graphics\Graph_3_lab\obj\Debug\net7.0-windows\Graph_3_lab.genruntimeconfig.cache
 D:\Учеба\Graphics\Graph_3_lab\obj\Debug\net7.0-windows\ref\Graph_3_lab.dll
 D:\Учеба\Graphics\Graph_3_lab\bin\Debug\net7.0-windows\Microsoft.Win32.dll
+D:\Учеба\Graphics\Graph_3_lab\bin\Debug\net7.0-windows\HelixToolkit.Wpf.dll

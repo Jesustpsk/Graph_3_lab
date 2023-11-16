@@ -11,10 +11,14 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Graph_3_lab.Models;
 using Microsoft.Win32;
 using Color = System.Drawing.Color;
+
+
 namespace Graph_3_lab
 {
     /// <summary>
@@ -24,26 +28,21 @@ namespace Graph_3_lab
     {
         private string objectFilePath;
         private double[,] ProjMatrix;
-        private static List<List<Point>> figure = new();
+        public static List<Point3D> _figure = new();
         public MainWindow()
         {
             ProjMatrix = new double[4, 4];
             InitializeComponent();
-            PlotAbove.Plot.AddVerticalLine(x: 0, color: Color.Black, width: 1);
-            PlotAbove.Plot.AddHorizontalLine(y: 0, color: Color.Black, width: 1);
-            Plot3D.Plot.AddVerticalLine(x: 0, color: Color.Black, width: 1);
-            Plot3D.Plot.AddHorizontalLine(y: 0, color: Color.Black, width: 1);
-            PlotFront.Plot.AddVerticalLine(x: 0, color: Color.Black, width: 1);
-            PlotFront.Plot.AddHorizontalLine(y: 0, color: Color.Black, width: 1);
-            PlotRight.Plot.AddVerticalLine(x: 0, color: Color.Black, width: 1);
-            PlotRight.Plot.AddHorizontalLine(y: 0, color: Color.Black, width: 1);
+            Display.SetAxis(helixViewport, PlotAbove.Plot, PlotFront.Plot, PlotRight.Plot);
+            // Включение вращения мышью
+            helixViewport.RotateGesture = new MouseGesture(MouseAction.LeftClick);
         }
 
         private void BtnUpload_OnClick(object sender, RoutedEventArgs e)
         {
             var openFileDialog = new OpenFileDialog
             {
-                Filter = "Object Files (*.obj)|*.obj|All Files (*.*)|*.*"
+                Filter = "Text Files (*.txt)|*.txt|Object Files (*.obj)|*.obj|All Files (*.*)|*.*"
             };
 
             if (openFileDialog.ShowDialog() != true) return;
@@ -53,7 +52,7 @@ namespace Graph_3_lab
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             //UpdateProjectionMatrix();
             //DisplayProjectionMatrix();
-            DisplayProjections();
+            Display.CreateFigure(_figure, meshVisual, helixViewport);
         }
         private void BtnProj_OnClick(object sender, RoutedEventArgs e)
         {
@@ -62,18 +61,18 @@ namespace Graph_3_lab
         
         private void LoadObjectFromFile(string filePath)
         {
-            figure.Clear();
+            _figure.Clear();
+            meshVisual.Children.Clear();
+            helixViewport.Children.Clear();
+            Display.SetAxis(helixViewport, PlotAbove.Plot, PlotFront.Plot, PlotRight.Plot);
+            // Включение вращения мышью
+            helixViewport.RotateGesture = new MouseGesture(MouseAction.LeftClick);
+            // Установка камеры
+            helixViewport.CameraController.ZoomExtents();
             using var reader = new StreamReader(filePath);
-            var text = reader.ReadToEnd();
-            if (text == "") return;
-            
-            var textArr = text.Split('\n');
-            foreach (var t1 in textArr)
-            {
-                var temp = t1.Split(" ");
-                var tempPoints = temp.Select(t => new Point(Convert.ToInt32(t.Split(';')[0]), Convert.ToInt32(t.Split(';')[1]))).ToList();
-                figure.Add(tempPoints);
-            }
+            var dots = reader.ReadToEnd();
+            if (dots == "") return;
+            _figure = Display.CreateList3D(dots);
         }
 
         private void UpdateProjectionMatrix()
@@ -99,19 +98,6 @@ namespace Graph_3_lab
         {
             // Отобразить матрицу в TextBox
             //MatrixTextBox.Text = "Projection Matrix:\n" + projectionMatrix.ToString();
-        }
-
-        private void DisplayProjections()
-        {
-            Plot3D.Plot.Clear();
-            foreach (var t in figure)
-            {
-                for (var j = 1; j < t.Count; j++)
-                {
-                    Plot3D.Plot.AddLine(t[j - 1].X, t[j - 1].Y, t[j].X, t[j].Y,
-                        Color.Red);
-                }
-            }
         }
         
         private double[,] CalculateProjectionMatrix(double sx, double sy, double sz, double lam, double D, double psix, double psiy, double psiz)
@@ -141,7 +127,5 @@ namespace Graph_3_lab
 
             return matrix;
         }
-
-        
     }
 }

@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net7.0-windows7.0": {
+      "HelixToolkit.Wpf/2.24.0": {
+        "type": "package",
+        "compile": {
+          "lib/net462/HelixToolkit.Wpf.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net462/HelixToolkit.Wpf.dll": {
+            "related": ".XML"
+          }
+        }
+      },
       "Microsoft.NETCore.Platforms/3.1.4": {
         "type": "package",
         "compile": {
@@ -115,6 +128,24 @@
     }
   },
   "libraries": {
+    "HelixToolkit.Wpf/2.24.0": {
+      "sha512": "oVoQcAGzq8HHBOAhcNVESsXhF75FI9qVrHvom38m71Ru2/7Aw5mSFY6MNlOCwRiRJCjGJYrNX4NKeiL6QBtSPA==",
+      "type": "package",
+      "path": "helixtoolkit.wpf/2.24.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "AUTHORS",
+        "CONTRIBUTORS",
+        "LICENSE",
+        "README.md",
+        "helixtoolkit.png",
+        "helixtoolkit.wpf.2.24.0.nupkg.sha512",
+        "helixtoolkit.wpf.nuspec",
+        "lib/net462/HelixToolkit.Wpf.XML",
+        "lib/net462/HelixToolkit.Wpf.dll"
+      ]
+    },
     "Microsoft.NETCore.Platforms/3.1.4": {
       "sha512": "9/y05/CuxE+j184Nr4KihhB9KcUkvGojmD4JV4Vt/mHhVZR+eOCD5WCM+CXye9K0OFMsaPXbN+IcaIpjgBGZmg==",
       "type": "package",
@@ -307,6 +338,7 @@
   },
   "projectFileDependencyGroups": {
     "net7.0-windows7.0": [
+      "HelixToolkit.Wpf >= 2.24.0",
       "Microsoft.Win32 >= 2.0.1",
       "ScottPlot.WPF >= 4.1.68"
     ]
@@ -355,6 +387,10 @@
       "net7.0-windows7.0": {
         "targetAlias": "net7.0-windows",
         "dependencies": {
+          "HelixToolkit.Wpf": {
+            "target": "Package",
+            "version": "[2.24.0, )"
+          },
           "Microsoft.Win32": {
             "target": "Package",
             "version": "[2.0.1, )"
@@ -386,5 +422,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'HelixToolkit.Wpf 2.24.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0-windows7.0'. This package may not be fully compatible with your project.",
+      "libraryId": "HelixToolkit.Wpf",
+      "targetGraphs": [
+        "net7.0-windows7.0"
+      ]
+    }
+  ]
 }

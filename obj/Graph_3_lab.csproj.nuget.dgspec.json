@@ -44,6 +44,10 @@
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
           "dependencies": {
+            "HelixToolkit.Wpf": {
+              "target": "Package",
+              "version": "[2.24.0, )"
+            },
             "Microsoft.Win32": {
               "target": "Package",
               "version": "[2.0.1, )"
