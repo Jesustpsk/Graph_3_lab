@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Graph_3_lab.Helpers;
 using Graph_3_lab.Models;
 using Microsoft.Win32;
 using Color = System.Drawing.Color;
@@ -77,6 +78,8 @@ namespace Graph_3_lab
 
         private void UpdateProjectionMatrix()
         {
+            if (tbSx.Text.IsEmptyOrWhiteSpace() || tbSy.Text.IsEmptyOrWhiteSpace() || tbSz.Text.IsEmptyOrWhiteSpace() ||
+                tbD.Text.IsEmptyOrWhiteSpace()) return;
             double sx = Convert.ToDouble(tbSx.Text) /* значение sx из интерфейса */;
             double sy = Convert.ToDouble(tbSy.Text) /* значение sy из интерфейса */;
             double sz = Convert.ToDouble(tbSz.Text) /* значение sz из интерфейса */;
