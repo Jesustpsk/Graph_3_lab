@@ -59,19 +59,18 @@ namespace Graph_3_lab
             
             vertices = Display.CreateFigure(_figure, meshVisual, helixViewport);
         }
+        [Obsolete("Obsolete")]
         private void BtnProj_OnClick(object sender, RoutedEventArgs e)
         {
             PlotAbove.Plot.Clear();
             PlotRight.Plot.Clear();
             PlotFront.Plot.Clear();
             Display.SetPlotAxis(PlotAbove, PlotRight, PlotFront);
-            ProjMatrixAbove = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD);
-            ProjMatrixRight = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD);
-            ProjMatrixFront = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD);
+            ProjMatrixAbove = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD)![2];
+            ProjMatrixFront = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD)![1];
+            ProjMatrixRight = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD)![0];
             Projection.DisplayProjectionMatrix(tbMatrix, ProjMatrixAbove);
-            Projection.DisplayProjections(vertices, ProjMatrixAbove, PlotAbove);
-            Projection.DisplayProjections(vertices, ProjMatrixRight, PlotRight);
-            Projection.DisplayProjections(vertices, ProjMatrixFront, PlotFront);
+            Projection.DisplayProjections(vertices, ProjMatrixAbove, ProjMatrixFront, ProjMatrixRight, PlotAbove, PlotFront, PlotRight);
         }
         
         private void LoadObjectFromFile(string filePath)
