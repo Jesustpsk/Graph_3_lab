@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Graph_3_lab.Helpers;
 using Graph_3_lab.Models;
+using HelixToolkit.Wpf;
 using Microsoft.Win32;
 using Color = System.Drawing.Color;
 
@@ -66,11 +67,28 @@ namespace Graph_3_lab
             PlotRight.Plot.Clear();
             PlotFront.Plot.Clear();
             Display.SetPlotAxis(PlotAbove, PlotRight, PlotFront);
-            ProjMatrixAbove = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD)![2];
+            ProjMatrixAbove = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD)![0];
             ProjMatrixFront = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD)![1];
-            ProjMatrixRight = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD)![0];
+            ProjMatrixRight = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD)![2];
             Projection.DisplayProjectionMatrix(tbMatrix, ProjMatrixAbove);
             Projection.DisplayProjections(vertices, ProjMatrixAbove, ProjMatrixFront, ProjMatrixRight, PlotAbove, PlotFront, PlotRight);
+            
+            /*var projectionMatrix = Projection.UpdateProjectionMatrix(tbSx, tbSy, tbSz, tbD)![3];
+
+            // Создание матрицы вида
+            var viewMatrix = new Matrix3D(
+                projectionMatrix[0, 0], projectionMatrix[0, 1], projectionMatrix[0, 2], projectionMatrix[0, 3],
+                projectionMatrix[1, 0], projectionMatrix[1, 1], projectionMatrix[1, 2], projectionMatrix[1, 3],
+                projectionMatrix[2, 0], projectionMatrix[2, 1], projectionMatrix[2, 2], projectionMatrix[2, 3],
+                projectionMatrix[3, 0], projectionMatrix[3, 1], projectionMatrix[3, 2], projectionMatrix[3, 3]);
+
+            // Создание камеры и применение матрицы вида
+            var camera = new PerspectiveCamera
+            {
+                Transform = new MatrixTransform3D(viewMatrix)
+            };
+            // Установка камеры в HelixViewport3D
+            helixViewport.Camera = camera;*/
         }
         
         private void LoadObjectFromFile(string filePath)

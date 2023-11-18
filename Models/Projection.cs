@@ -25,9 +25,10 @@ public static class Projection
             double[,] m1 = CalculateProjectionMatrixTop(sx, sy, sz, lam, D, psix, psiy, psiz);
             double[,] m2 = CalculateProjectionMatrixFront(sx, sy, sz, lam, D, psix, psiy, psiz);
             double[,] m3 = CalculateProjectionMatrixSide(sx, sy, sz, lam, D, psix, psiy, psiz);
+            double[,] m4 = CalculateProjectionMatrix(sx, sy, sz, lam, D, psix, psiy, psiz);
             var list = new List<double[,]>
             {
-                m1, m2, m3
+                m1, m2, m3, m4
             };
             return list;
         }
@@ -130,11 +131,11 @@ public static class Projection
 
             return matrix;
         }
-        /*private static double[,] CalculateProjectionMatrix(double sx, double sy, double sz, double lam, double D, double psix, double psiy, double psiz)
+        private static double[,] CalculateProjectionMatrix(double sx, double sy, double sz, double lam, double D, double psix, double psiy, double psiz)
         {
             var matrix = new double[4,4];
 
-            // Рассчитываем элементы матрицы проецирования TODO: реализовать матрицы проецирования для всех плоскостей
+            // Рассчитываем элементы матрицы проецирования
             matrix[0,0] = sx * Math.Cos(lam);
             matrix[0,1] = -sy * Math.Sin(psix) * Math.Sin(lam);
             matrix[0,2] = -sz * Math.Cos(psiy) * Math.Sin(lam);
@@ -156,7 +157,7 @@ public static class Projection
             matrix[3,3] = 1;
 
             return matrix;
-        }*/
+        }
         
         [Obsolete("Obsolete")]
         public static void DisplayProjections(List<Point3D> vertices, double[,] projectionMatrixXY,double[,] projectionMatrixXZ,double[,] projectionMatrixYZ, WpfPlot plot1, WpfPlot plot2, WpfPlot plot3)
